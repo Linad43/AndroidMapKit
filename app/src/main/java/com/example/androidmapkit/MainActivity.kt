@@ -65,7 +65,15 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
                 override fun onLocationStatusUpdated(locationStatus: LocationStatus) {
                 }
             })
-        mapKit.createTrafficLayer(binding.mapview.mapWindow).isTrafficVisible = true
+        val traffic = mapKit.createTrafficLayer(binding.mapview.mapWindow)
+        binding.trafficFAB.setOnClickListener {
+            if (traffic.isTrafficVisible) {
+                traffic.isTrafficVisible = false
+            } else {
+                traffic.isTrafficVisible = true
+            }
+        }
+
     }
 
     private fun requestLocationPermission() {
