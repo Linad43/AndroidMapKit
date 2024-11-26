@@ -54,17 +54,6 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
         userLocationLayer.isVisible = true
         userLocationLayer.isHeadingEnabled = true
         userLocationLayer.setObjectListener(this)
-        mapKit.createLocationManager().subscribeForLocationUpdates(
-            0.0, 0, 0.0, true, FilteringMode.ON,
-            object : LocationListener {
-                override fun onLocationUpdated(location: Location) {
-                    Log.d("TagCheck", "LocationUpdated " + location.getPosition().getLongitude())
-                    Log.d("TagCheck", "LocationUpdated " + location.getPosition().getLatitude())
-                }
-
-                override fun onLocationStatusUpdated(locationStatus: LocationStatus) {
-                }
-            })
         val traffic = mapKit.createTrafficLayer(binding.mapview.mapWindow)
         binding.trafficFAB.setOnClickListener {
             if (traffic.isTrafficVisible) {
