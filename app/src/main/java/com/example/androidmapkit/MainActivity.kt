@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity(), UserLocationObjectListener {
                 override fun onLocationStatusUpdated(locationStatus: LocationStatus) {
                 }
             })
+        mapKit.createTrafficLayer(binding.mapview.mapWindow).isTrafficVisible = true
     }
 
     private fun requestLocationPermission() {
